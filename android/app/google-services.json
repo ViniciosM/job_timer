@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1092630347818",
+    "project_id": "job-timer-360",
+    "storage_bucket": "job-timer-360.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1092630347818:android:ba8d319f233461ed1ec353",
+        "android_client_info": {
+          "package_name": "br.com.vyzon.job_timer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1092630347818-4jmkf50hga3j44s8oldstvdinvj6drlc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALRqs-W0Z2SEYlJb8slNmHKGIxMR0g7aU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1092630347818-4jmkf50hga3j44s8oldstvdinvj6drlc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
