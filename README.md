@@ -1,6 +1,6 @@
 # job_timer
 
-A new Flutter project.
+JobTimer is application with goal to manager our jobs. Made with Flutter, Modular, BloC/Cubit e Isar.
 
 ## Getting Started
 
