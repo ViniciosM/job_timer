@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:job_timer/app/entities/project_status.dart';
 
+import '../controller/home_controller.dart';
+
 class HeaderProjectMenu extends SliverPersistentHeaderDelegate {
+  final HomeController homeController;
+
+  HeaderProjectMenu({required this.homeController});
+
   @override
   Widget build(Object context, double shrinkOffset, bool overlapsContent) {
     return LayoutBuilder(builder: ((context, constraints) {
@@ -14,6 +20,7 @@ class HeaderProjectMenu extends SliverPersistentHeaderDelegate {
           SizedBox(
             width: constraints.maxWidth * .5,
             child: DropdownButtonFormField<ProjectStatus>(
+              value: ProjectStatus.em_andamento,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
@@ -27,7 +34,11 @@ class HeaderProjectMenu extends SliverPersistentHeaderDelegate {
                         child: Text(e.label),
                       ))
                   .toList(),
-              onChanged: (value) {},
+              onChanged: (status) {
+                if (status != null) {
+                  homeController.filter(status);
+                }
+              },
             ),
           ),
           SizedBox(
@@ -35,8 +46,9 @@ class HeaderProjectMenu extends SliverPersistentHeaderDelegate {
             child: ElevatedButton.icon(
               icon: const Icon(Icons.add),
               label: const Text('Novo projeto'),
-              onPressed: () {
-                Modular.to.pushNamed('/project/register/');
+              onPressed: () async {
+                await Modular.to.pushNamed('/project/register/');
+                homeController.loadProjects();
               },
             ),
           ),

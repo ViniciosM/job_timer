@@ -10,7 +10,7 @@ import '../../../entities/project_status.dart';
 part 'home_state.dart';
 
 class HomeController extends Cubit<HomeState> {
-  ProjectService _projectService;
+  final ProjectService _projectService;
 
   HomeController({required ProjectService projectService})
       : _projectService = projectService,
@@ -26,5 +26,14 @@ class HomeController extends Cubit<HomeState> {
       log('Erro ao buscar os projetos', error: e, stackTrace: s);
       emit(state.copyWith(status: HomeStatus.failure));
     }
+  }
+
+  Future<void> filter(ProjectStatus status) async {
+    emit(state.copyWith(status: HomeStatus.loading, projects: []));
+    final projects = await _projectService.findByStatus(status: status);
+    emit(state.copyWith(
+        status: HomeStatus.complete,
+        projects: projects,
+        projectFilter: status));
   }
 }
