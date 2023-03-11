@@ -16,6 +16,6 @@ class HomeModule extends Module {
       child: ((context, args) => HomePage(
             homeController: Modular.get()..loadProjects(),
           )),
-    )
+    ),
   ];
 }
